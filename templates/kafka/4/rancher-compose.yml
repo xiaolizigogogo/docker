@@ -84,11 +84,11 @@
       required: true
       type: "service"
     - variable: "host_label"
-          type: "string"
-          required: true
-          label: "host_label"
-          description: "Host for the Elasticsearch Cluster"
-          default: "kafka=true"
+      type: "string"
+      required: true
+      label: "host_label"
+      description: "Host for the Elasticsearch Cluster"
+      default: "kafka=true"
             
 broker:
   scale: ${kafka_scale}
