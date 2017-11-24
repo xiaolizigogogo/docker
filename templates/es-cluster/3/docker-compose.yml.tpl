@@ -4,7 +4,7 @@ services:
         labels:
             io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
             io.rancher.container.hostname_override: container_name
-			io.rancher.scheduler.affinity:host_label: ${host_label}
+            io.rancher.scheduler.affinity:host_label: ${host_label}
             io.rancher.sidekicks: es-storage{{- if eq .Values.UPDATE_SYSCTL "true" -}},es-sysctl{{- end}}
         image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
         environment:
@@ -36,7 +36,7 @@ services:
             io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
             io.rancher.container.hostname_override: container_name
             io.rancher.sidekicks: es-storage{{- if eq .Values.UPDATE_SYSCTL "true" -}},es-sysctl{{- end}}
-			io.rancher.scheduler.affinity:host_label: ${host_label}
+            io.rancher.scheduler.affinity:host_label: ${host_label}
         image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
         environment:
             - "cluster.name=${cluster_name}"
@@ -68,7 +68,7 @@ services:
             io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
             io.rancher.container.hostname_override: container_name
             io.rancher.sidekicks: es-storage{{- if eq .Values.UPDATE_SYSCTL "true" -}},es-sysctl{{- end}}
-			io.rancher.scheduler.affinity:host_label: ${host_label}
+            io.rancher.scheduler.affinity:host_label: ${host_label}
         image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
         environment:
             - "cluster.name=${cluster_name}"
@@ -98,7 +98,7 @@ services:
     es-storage:
         labels:
             io.rancher.container.start_once: true
-			io.rancher.scheduler.affinity:host_label: ${host_label}
+            io.rancher.scheduler.affinity:host_label: ${host_label}
         network_mode: none
         image: rawmind/alpine-volume:0.0.2-1
         environment:
@@ -112,7 +112,7 @@ services:
     es-sysctl:
         labels:
             io.rancher.container.start_once: true
-			io.rancher.scheduler.affinity:host_label: ${host_label}
+            io.rancher.scheduler.affinity:host_label: ${host_label}
         network_mode: none
         image: rawmind/alpine-sysctl:0.1
         privileged: true
