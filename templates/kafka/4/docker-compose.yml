@@ -21,12 +21,14 @@ broker:
     io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: broker-volume, broker-conf
+    io.rancher.scheduler.affinity:host_label: ${host_label}
 broker-conf:
   net: none
   labels:
     io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
     io.rancher.container.hostname_override: container_name
     io.rancher.container.start_once: true
+    io.rancher.scheduler.affinity:host_label: ${host_label}
   image: rawmind/rancher-kafka:0.11.0.0-1
   volumes:
     - /opt/tools
@@ -36,6 +38,7 @@ broker-volume:
     io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
     io.rancher.container.hostname_override: container_name
     io.rancher.container.start_once: true
+    io.rancher.scheduler.affinity:host_label: ${host_label}
   environment:
     - SERVICE_UID=10003
     - SERVICE_GID=10003
