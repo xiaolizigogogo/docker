@@ -84,13 +84,3 @@ catalog:
       required: true
       default: rabbitmq/dev
       type: "service"
-services:
-  demo:
-    scale: ${demo_scale}
-    health_check:
-      port: 8080
-      interval: 5000
-      unhealthy_threshold: 3
-      request_line: ''
-      healthy_threshold: 2
-      response_timeout: 5000

@@ -5,8 +5,6 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
     image: registry.cn-beijing.aliyuncs.com/jml/demo:${docker_version}
-    volumes_from:
-      - demo-volume
     external_links:
       - ${mysql_link}:db
       - ${zookeeper_link}:zk
@@ -18,3 +16,4 @@ services:
 volumes:
   demo-volume:
     driver: local
+    per_container: true
