@@ -3,8 +3,8 @@ services:
   demo:
     labels:
       io.rancher.container.hostname_override: container_name
-      io.rancher.sidekicks: sonarqube-storage
-    image: sonarqube:${docker_version}
+	  io.rancher.scheduler.affinity:host_label: ${host_label}
+    image: registry.cn-beijing.aliyuncs.com/jml/demo:${docker_version}
     volumes_from:
       - demo-volume
     external_links:
