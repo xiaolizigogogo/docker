@@ -32,55 +32,55 @@ catalog:
     - variable: "mysql_link"
       description: "数据库关联地址"
       label: "mysql_link:"
-      required: true
+      required: false
       default: mysql/dev
       type: "service"
     
     - variable: "zookeeper_link"
       description: "zk关联地址"
       label: "zk_link:"
-      required: true
+      required: false
       default: zk/dev
       type: "service"
     
     - variable: "redis_link"
       description: "redis关联地址"
       label: "redis_link:"
-      required: true
+      required: false
       default: redis/dev
       type: "service"
       
     - variable: "kafka_link"
       description: "kafka关联地址"
       label: "kafka_link:"
-      required: true
+      required: false
       default: kafka/dev
       type: "service"
       
     - variable: "mongodb_link"
       description: "mongodb关联地址"
       label: "mongodb_link:"
-      required: true
+      required: false
       default: mongodb/dev
       type: "service"
       
     - variable: "es_link"
       description: "es关联地址"
       label: "es_link:"
-      required: true
+      required: false
       default: es/dev
       type: "service"
     
     - variable: "es_cluster_name"
       description: "es集群名"
       label: "es_cluster_name:"
-      required: true
+      required: false
       default: es_cluster
       type: "string"
       
     - variable: "rabbitmq_link"
       description: "rabbitmq关联地址"
       label: "rabbitmq_link:"
-      required: true
+      required: false
       default: rabbitmq/dev
       type: "service"
