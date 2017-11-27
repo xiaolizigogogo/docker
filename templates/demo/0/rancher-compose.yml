@@ -15,16 +15,16 @@ catalog:
       default: 1
       type: "int"
       
-    - variable: "host"
+    - variable: "host_label"
       description: "host"
-      label: "host:"
+      label: "host_label:"
       required: true
       default: "service=true"
       type: "string"
     
-    - variable: "docker-version"
+    - variable: "docker_version"
       description: "镜像版本"
-      label: "docker-version:"
+      label: "docker_version:"
       required: true
       default: "1.0.0"
       type: "string"
