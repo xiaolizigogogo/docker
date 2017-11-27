@@ -19,42 +19,42 @@
       label: "mysql_link:"
       required: true
       default: mysql/dev
-      type: "string"
+      type: "service"
     
     - variable: "zookeeper_link"
       description: "zk关联地址"
       label: "zk_link:"
       required: true
       default: zk/dev
-      type: "string"
+      type: "service"
     
     - variable: "redis_link"
       description: "redis关联地址"
       label: "redis_link:"
       required: true
       default: redis/dev
-      type: "string"
+      type: "service"
       
     - variable: "kafka_link"
       description: "kafka关联地址"
       label: "kafka_link:"
       required: true
       default: kafka/dev
-      type: "string"
+      type: "service"
       
     - variable: "mongodb_link"
       description: "mongodb关联地址"
       label: "mongodb_link:"
       required: true
       default: mongodb/dev
-      type: "string"
+      type: "service"
       
     - variable: "es_link"
       description: "es关联地址"
       label: "es_link:"
       required: true
       default: es/dev
-      type: "string"
+      type: "service"
     
     - variable: "es_cluster_name"
       description: "es集群名"
@@ -68,7 +68,7 @@
       label: "rabbitmq_link:"
       required: true
       default: rabbitmq/dev
-      type: "string"
+      type: "service"
 zk:
   scale: ${demo_scale}
   health_check:
