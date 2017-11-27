@@ -1,7 +1,9 @@
-.catalog:
+version: '2'
+catalog:
   name: Demo
   version: 1.0.0-rancher1
   description: |
+    (Experimental) Demo.
   minimum_rancher_version: v1.0.0
   maintainer: "JML <9267435@qq.com>"
   uuid: demo-0
@@ -82,12 +84,13 @@
       required: true
       default: rabbitmq/dev
       type: "service"
-demo:
-  scale: ${demo_scale}
-  health_check:
-    port: 8080
-    interval: 5000
-    unhealthy_threshold: 3
-    request_line: ''
-    healthy_threshold: 2
-    response_timeout: 5000
+services:
+  demo:
+    scale: ${demo_scale}
+    health_check:
+      port: 8080
+      interval: 5000
+      unhealthy_threshold: 3
+      request_line: ''
+      healthy_threshold: 2
+      response_timeout: 5000
