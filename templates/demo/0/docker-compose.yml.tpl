@@ -1,17 +1,12 @@
 version: '2'
 services:
-  sonarqube:
+  demo:
     labels:
       io.rancher.container.hostname_override: container_name
       io.rancher.sidekicks: sonarqube-storage
     image: sonarqube:${docker_version}
-    environment:
-      SONARQUBE_WEB_JVM_OPTS: ${jvm_opts}
-      SONARQUBE_JDBC_USERNAME: ${postgres_user}
-      SONARQUBE_JDBC_PASSWORD: ${postgres_password}
-      SONARQUBE_JDBC_URL: jdbc:postgresql://db:${postgres_port}/${postgres_db}
     volumes_from:
-      - sonarqube-storage
+      - demo-volume
     external_links:
       - ${mysql_link}:db
 	  - ${zookeeper_link}:zk
