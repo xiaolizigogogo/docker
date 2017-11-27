@@ -15,7 +15,6 @@ services:
 	  - ${mongodb_link}:mongodb
 	  - ${es_link}:es
 	  - ${rabbitmq_link}:rabbitmq
-{{- end}}
 volumes:
   demo-volume:
     driver: local
