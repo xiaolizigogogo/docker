@@ -82,10 +82,10 @@
       required: true
       default: rabbitmq/dev
       type: "service"
-zk:
+demo:
   scale: ${demo_scale}
   health_check:
-    port: 2181
+    port: 8080
     interval: 5000
     unhealthy_threshold: 3
     request_line: ''
