@@ -1,8 +1,8 @@
-name: Test Demo
+name: Apollo Config
 description: |
-  Test Demo
+  Apollo Config
 version: 1.0.0-rancher1
-category: Demo
+category: Config
 maintainer: "JML <9267435@qq.com>"
 projectURL: 
 license: 

@@ -1,8 +1,8 @@
-name: Test Demo
+name: Job
 description: |
-  Test Demo
+  Job
 version: 1.0.0-rancher1
-category: Demo
+category: Job
 maintainer: "JML <9267435@qq.com>"
 projectURL: 
 license: 
