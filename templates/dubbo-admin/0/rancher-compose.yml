@@ -1,0 +1,99 @@
+version: '2'
+catalog:
+  name: dubbo-admin
+  version: 1.0.0-rancher1
+  description: |
+    (Experimental) dubbo-admin.
+  minimum_rancher_version: v1.0.0
+  maintainer: "JML <9267435@qq.com>"
+  uuid: dubbo-admin-0
+  questions:
+    - variable: "dubbo-admin_scale"
+      description: "副本数量"
+      label: "dubbo-admin_scale:"
+      required: true
+      default: 1
+      type: "int"
+      
+    - variable: "host_label"
+      description: "host"
+      label: "host_label:"
+      required: true
+      default: "config=true"
+      type: "string"
+    
+    - variable: "docker_version"
+      description: "镜像版本"
+      label: "docker_version:"
+      required: true
+      default: "1.0.0"
+      type: "string"
+      
+    - variable: "mysql_link"
+      description: "数据库关联地址"
+      label: "mysql_link:"
+      required: false
+      default: mysql/dev
+      type: "service"
+    
+    - variable: "zookeeper_link"
+      description: "zk关联地址"
+      label: "zk_link:"
+      required: false
+      default: zk/dev
+      type: "service"
+    
+    - variable: "redis_link"
+      description: "redis关联地址"
+      label: "redis_link:"
+      required: false
+      default: redis/dev
+      type: "service"
+      
+    - variable: "kafka_link"
+      description: "kafka关联地址"
+      label: "kafka_link:"
+      required: false
+      default: kafka/dev
+      type: "service"
+      
+    - variable: "mongodb_link"
+      description: "mongodb关联地址"
+      label: "mongodb_link:"
+      required: false
+      default: mongodb/dev
+      type: "service"
+      
+    - variable: "es_link"
+      description: "es关联地址"
+      label: "es_link:"
+      required: false
+      default: es/dev
+      type: "service"
+    
+    - variable: "es_cluster_name"
+      description: "es集群名"
+      label: "es_cluster_name:"
+      required: false
+      default: es_cluster
+      type: "string"
+      
+    - variable: "rabbitmq_link"
+      description: "rabbitmq关联地址"
+      label: "rabbitmq_link:"
+      required: false
+      default: rabbitmq/dev
+      type: "service"
+services:
+  dubbo-admin:
+    scale: 2
+    start_on_create: true
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 8080
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      strategy: recreate
+      reinitializing_timeout: 60000
