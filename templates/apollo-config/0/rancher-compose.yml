@@ -1,12 +1,12 @@
 version: '2'
 catalog:
-  name: Demo
+  name: Config
   version: 1.0.0-rancher1
   description: |
-    (Experimental) Demo.
+    (Experimental) Config
   minimum_rancher_version: v1.0.0
   maintainer: "JML <9267435@qq.com>"
-  uuid: demo-0
+  uuid: config-0
   questions:
     - variable: "demo_scale"
       description: "副本数量"
@@ -19,7 +19,7 @@ catalog:
       description: "host"
       label: "host_label:"
       required: true
-      default: "service=true"
+      default: "config=true"
       type: "string"
     
     - variable: "docker_version"
@@ -85,7 +85,7 @@ catalog:
       default: rabbitmq/dev
       type: "service"
 services:
-  demo:
+  config:
     scale: 2
     start_on_create: true
     health_check:

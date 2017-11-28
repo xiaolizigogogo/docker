@@ -1,11 +1,11 @@
 version: '2'
 services:
-  demo:
+  job:
     labels:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.pull_image: always
-    image: registry.cn-beijing.aliyuncs.com/jml/demo:${docker_version}
+    image: registry.cn-beijing.aliyuncs.com/jml/xxl-job-admin:${docker_version}
     external_links:
       - ${mysql_link}:db
       - ${zookeeper_link}:zk
@@ -15,6 +15,6 @@ services:
       - ${es_link}:es
       - ${rabbitmq_link}:rabbitmq
 volumes:
-  demo-volume:
+  job-volume:
     driver: local
     per_container: true

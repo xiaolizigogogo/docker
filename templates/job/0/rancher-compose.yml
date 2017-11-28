@@ -1,12 +1,12 @@
 version: '2'
 catalog:
-  name: Demo
+  name: Job
   version: 1.0.0-rancher1
   description: |
-    (Experimental) Demo.
+    (Experimental) Job.
   minimum_rancher_version: v1.0.0
   maintainer: "JML <9267435@qq.com>"
-  uuid: demo-0
+  uuid: job-0
   questions:
     - variable: "demo_scale"
       description: "副本数量"
@@ -85,7 +85,7 @@ catalog:
       default: rabbitmq/dev
       type: "service"
 services:
-  demo:
+  job:
     scale: 2
     start_on_create: true
     health_check:
