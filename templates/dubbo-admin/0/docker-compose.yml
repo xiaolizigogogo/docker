@@ -8,12 +8,14 @@ services:
     image: registry.cn-beijing.aliyuncs.com/jml/dubbo-admin:${docker_version}
     external_links:
       - ${mysql_link}:db
-      - ${zookeeper_link}:zk
+      - ${zookeeper_link}:zookeeper
       - ${redis_link}:redis
       - ${kafka_link}:kafka
       - ${mongodb_link}:mongodb
       - ${es_link}:es
       - ${rabbitmq_link}:rabbitmq
+    expose:
+      - 8080
 volumes:
   dubbo-admin-volume:
     driver: local
