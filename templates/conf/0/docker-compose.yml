@@ -1,0 +1,20 @@
+version: '2'
+services:
+  conf:
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.pull_image: always
+    image: registry.cn-beijing.aliyuncs.com/jml/xxl-job-admin:${docker_version}
+    external_links:
+      - ${mysql_link}:db
+      - ${zookeeper_link}:zk
+      - ${redis_link}:redis
+      - ${kafka_link}:kafka
+      - ${mongodb_link}:mongodb
+      - ${es_link}:es
+      - ${rabbitmq_link}:rabbitmq
+volumes:
+  conf-volume:
+    driver: local
+    per_container: true
