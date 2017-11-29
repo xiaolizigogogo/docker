@@ -1,11 +1,11 @@
 version: '2'
 services:
-  dealer-service:
+  dealer-provider:
     labels:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.pull_image: always
-    image: registry.cn-beijing.aliyuncs.com/jml/dealer-service:${docker_version}
+    image: registry.cn-beijing.aliyuncs.com/jml/dealer-provider:${docker_version}
     external_links:
       - ${mysql_link}:db
       - ${zookeeper_link}:zk
