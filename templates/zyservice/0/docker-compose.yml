@@ -16,7 +16,7 @@ services:
       - ${rabbitmq_link}:rabbitmq
       - ${eureka_link}:eurekaserver
     links:
-    - eurekaserver
+      - eurekaserver
     environment:
       - ENV=${profile}
   gateway:
@@ -34,12 +34,10 @@ services:
       - ${es_link}:es
       - ${rabbitmq_link}:rabbitmq
       - ${eureka_link}:eurekaserver
-        links:
-    - eurekaserver
+    links:
+      - eurekaserver
     environment:
       - ENV=${profile}
-    links:
-    - eurekaserver
   dataexservice:
     labels:
       io.rancher.container.hostname_override: container_name
@@ -58,7 +56,7 @@ services:
     environment:
       - ENV=${profile}
     links:
-    - eurekaserver
+      - eurekaserver
   mox-service:
     labels:
       io.rancher.container.hostname_override: container_name
@@ -77,7 +75,7 @@ services:
     environment:
       - ENV=${profile}
     links:
-    - eurekaserver
+      - eurekaserver
   eurekaserver:
     labels:
       io.rancher.container.hostname_override: container_name
