@@ -19,6 +19,8 @@ services:
       - eurekaserver
     environment:
       - ENV=${profile}
+    expose:
+      - "8080"
   gateway:
     labels:
       io.rancher.container.hostname_override: container_name
@@ -38,6 +40,8 @@ services:
       - eurekaserver
     environment:
       - ENV=${profile}
+    expose:
+      - "8080"
   dataexservice:
     labels:
       io.rancher.container.hostname_override: container_name
@@ -57,6 +61,8 @@ services:
       - ENV=${profile}
     links:
       - eurekaserver
+    expose:
+      - "8080"
   mox-service:
     labels:
       io.rancher.container.hostname_override: container_name
@@ -76,6 +82,8 @@ services:
       - ENV=${profile}
     links:
       - eurekaserver
+    expose:
+      - "8080"
   eurekaserver:
     labels:
       io.rancher.container.hostname_override: container_name
@@ -92,6 +100,8 @@ services:
       - ${rabbitmq_link}:rabbitmq
     environment:
       - ENV=${profile}
+    expose:
+      - "8080"
 volumes:
   conf-volume:
     driver: local
