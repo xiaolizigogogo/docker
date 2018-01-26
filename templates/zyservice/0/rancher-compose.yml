@@ -14,6 +14,12 @@ catalog:
       required: true
       default: 1
       type: "int"
+    - variable: "profile"
+      description: "系统环境"
+      label: "profile:"
+      required: true
+      default: 1
+      type: "string"
       
     - variable: "host_label"
       description: "host"
