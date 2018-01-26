@@ -1,0 +1,108 @@
+version: '2'
+services:
+  cfservice:
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.pull_image: always
+    image: register.zytc.com/library/cfservice:${docker_version}
+    external_links:
+      - ${mysql_link}:db
+      - ${zookeeper_link}:zk
+      - ${redis_link}:redis
+      - ${kafka_link}:kafka.zytc.com
+      - ${mongodb_link}:mongodb
+      - ${es_link}:es
+      - ${rabbitmq_link}:rabbitmq
+      - ${eureka_link}:eurekaserver
+    links:
+      - eurekaserver
+    environment:
+      - ENV=${profile}
+    expose:
+      - "8080"
+  gateway:
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.pull_image: always
+    image: register.zytc.com/library/gateway:${docker_version}
+    external_links:
+      - ${mysql_link}:db
+      - ${zookeeper_link}:zk
+      - ${redis_link}:redis
+      - ${kafka_link}:kafka.zytc.com
+      - ${mongodb_link}:mongodb
+      - ${es_link}:es
+      - ${rabbitmq_link}:rabbitmq
+      - ${eureka_link}:eurekaserver
+    links:
+      - eurekaserver
+    environment:
+      - ENV=${profile}
+    expose:
+      - "8080"
+  dataexservice:
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.pull_image: always
+    image: register.zytc.com/library/dataexservice:${docker_version}
+    external_links:
+      - ${mysql_link}:db
+      - ${zookeeper_link}:zk
+      - ${redis_link}:redis
+      - ${kafka_link}:kafka.zytc.com
+      - ${mongodb_link}:mongodb
+      - ${es_link}:es
+      - ${rabbitmq_link}:rabbitmq
+      - ${eureka_link}:eurekaserver
+    environment:
+      - ENV=${profile}
+    links:
+      - eurekaserver
+    expose:
+      - "8080"
+  mox-service:
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.pull_image: always
+    image: register.zytc.com/library/mox-service:${docker_version}
+    external_links:
+      - ${mysql_link}:db
+      - ${zookeeper_link}:zk
+      - ${redis_link}:redis
+      - ${kafka_link}:kafka.zytc.com
+      - ${mongodb_link}:mongodb
+      - ${es_link}:es
+      - ${rabbitmq_link}:rabbitmq
+      - ${eureka_link}:eurekaserver
+    environment:
+      - ENV=${profile}
+    links:
+      - eurekaserver
+    expose:
+      - "8080"
+  eurekaserver:
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.pull_image: always
+    image: register.zytc.com/library/eurekaserver:${docker_version}
+    external_links:
+      - ${mysql_link}:db
+      - ${zookeeper_link}:zk
+      - ${redis_link}:redis
+      - ${kafka_link}:kafka.zytc.com
+      - ${mongodb_link}:mongodb
+      - ${es_link}:es
+      - ${rabbitmq_link}:rabbitmq
+    environment:
+      - ENV=${profile}
+    expose:
+      - "8080"
+volumes:
+  conf-volume:
+    driver: local
+    per_container: true
