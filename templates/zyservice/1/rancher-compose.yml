@@ -91,6 +91,10 @@ catalog:
       required: false
       type: "service"
 services:
+  eurekaserver-volume:
+    retain_ip: true
+    scale: ${scale}
+    start_on_create: true
   eurekaserver:
     scale: ${scale}
     start_on_create: true

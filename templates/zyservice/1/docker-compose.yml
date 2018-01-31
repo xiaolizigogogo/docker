@@ -102,7 +102,25 @@ services:
       - ENV=${profile}
     expose:
       - "8080"
+    tty: true
+    volumes_from:
+    - broker-volume
+  eurekaserver-volume:
+    image: rawmind/alpine-volume:0.0.2-1
+    environment:
+      SERVICE_GID: '10003'
+      SERVICE_UID: '10003'
+      SERVICE_VOLUME: /home/zytc/logs
+    external_links:
+    - ${kafka_link}:kafka.zytc.com
+    network_mode: none
+    volumes:
+    - eurekaserverdata:/home/zytc/logs
+    labels:
+      io.rancher.container.start_once: 'true'
+      io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+      io.rancher.container.hostname_override: container_name
 volumes:
-  conf-volume:
+  eurekaserverdata:
     driver: local
     per_container: true
