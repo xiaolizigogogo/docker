@@ -170,6 +170,7 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.pull_image: always
+      io.rancher.sidekicks: mox-service-volume , mox-service-log
     image: register.zytc.com/library/mox-service:${docker_version}
     external_links:
       - ${mysql_link}:db
@@ -204,7 +205,6 @@ services:
       io.rancher.container.start_once: 'true'
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
       io.rancher.container.hostname_override: container_name
-      io.rancher.sidekicks: mox-service-volume , mox-service-log
   mox-service-log:
     image: register.zytc.com/library/filebeat:1.0-release
     environment:
