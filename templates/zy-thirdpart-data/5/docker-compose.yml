@@ -1,12 +1,12 @@
 version: '2'
 services:
-  dataexservice:
+  bairong-service:
     labels:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.pull_image: always
-      io.rancher.sidekicks: dataexservice-volume , dataexservice-log
-    image: register.zytc.com/library/dataexservice:${docker_version}
+      io.rancher.sidekicks: bairong-service-volume , bairong-service-log
+    image: register.zytc.com/library/bairong-service:${docker_version}
     external_links:
       - ${mysql_link}:db
       - ${zookeeper_link}:zk
@@ -23,8 +23,8 @@ services:
       - "8080"
     tty: true
     volumes_from:
-    - dataexservice-volume
-  dataexservice-volume:
+    - bairong-service-volume
+  bairong-service-volume:
     image: rawmind/alpine-volume:0.0.2-1
     environment:
       SERVICE_GID: '10003'
@@ -34,21 +34,21 @@ services:
     - ${kafka_link}:kafka.zytc.com
     network_mode: none
     volumes:
-    - dataexservicedata:${log_path}
+    - bairongservicedata:${log_path}
     labels:
       io.rancher.container.start_once: 'true'
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
       io.rancher.container.hostname_override: container_name
-  dataexservice-log:
+  bairong-service-log:
     image: register.zytc.com/library/filebeat:1.0-release
     environment:
       SERVICE_GID: '10002'
       SERVICE_UID: '10002'
     external_links:
     - ${kafka_link}:kafka.zytc.com
-    network_mode: container:dataexservice
+    network_mode: container:bairong-service
     volumes_from:
-    - dataexservice-volume
+    - bairong-service-volume
     labels:
       io.rancher.container.start_once: 'true'
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
@@ -88,7 +88,7 @@ services:
     - ${kafka_link}:kafka.zytc.com
     network_mode: none
     volumes:
-    - mox-servicedata:${log_path}
+    - moxservicedata:${log_path}
     labels:
       io.rancher.container.start_once: 'true'
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
@@ -141,7 +141,7 @@ services:
     - ${kafka_link}:kafka.zytc.com
     network_mode: none
     volumes:
-    - eurekaserverdata:${log_path}
+    - carservicedata:${log_path}
     labels:
       io.rancher.container.start_once: 'true'
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
@@ -182,7 +182,7 @@ services:
       - "8080"
     tty: true
     volumes_from:
-    - eurekaserver-volume
+    - sms-service-volume
   sms-service-volume:
     image: rawmind/alpine-volume:0.0.2-1
     environment:
@@ -193,7 +193,7 @@ services:
     - ${kafka_link}:kafka.zytc.com
     network_mode: none
     volumes:
-    - eurekaserverdata:${log_path}
+    - smsservicedata:${log_path}
     labels:
       io.rancher.container.start_once: 'true'
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
@@ -216,7 +216,7 @@ volumes:
   mox-servicedata:
     driver: local
     per_container: true
-  dataexservicedata:
+  bairongservicedata:
     driver: local
     per_container: true
   carservicedata:
