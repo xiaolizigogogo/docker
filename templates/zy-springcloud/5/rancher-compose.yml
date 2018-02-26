@@ -25,7 +25,7 @@ catalog:
       description: "host"
       label: "host_label:"
       required: true
-      default: "config=true"
+      default: "server=true"
       type: "string"
     
     - variable: "docker_version"
