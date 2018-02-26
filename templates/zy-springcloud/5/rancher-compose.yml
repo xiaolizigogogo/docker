@@ -106,10 +106,10 @@ services:
       healthy_threshold: 2
       port: 8080
       unhealthy_threshold: 3
-      initializing_timeout: 60000
+      initializing_timeout: 200000
       interval: 2000
       strategy: recreate
-      reinitializing_timeout: 60000
+      reinitializing_timeout: 100000
   gateway:
     scale: ${scale}
     start_on_create: true
@@ -118,10 +118,10 @@ services:
       healthy_threshold: 2
       port: 8080
       unhealthy_threshold: 3
-      initializing_timeout: 60000
+      initializing_timeout: 100000
       interval: 2000
       strategy: recreate
-      reinitializing_timeout: 60000
+      reinitializing_timeout: 100000
   configserver:
     scale: ${scale}
     start_on_create: true
@@ -130,7 +130,7 @@ services:
       healthy_threshold: 2
       port: 8080
       unhealthy_threshold: 3
-      initializing_timeout: 60000
+      initializing_timeout: 100000
       interval: 2000
       strategy: recreate
-      reinitializing_timeout: 60000
+      reinitializing_timeout: 100000
