@@ -47,7 +47,7 @@ services:
       SERVICE_UID: '10002'
     external_links:
     - ${kafka_link}:kafka.zytc.com
-    network_mode: container:eurekaserver
+    network_mode: container:gateway
     volumes_from:
     - gateway-volume
     labels:
@@ -122,6 +122,8 @@ services:
       - ${mongodb_link}:mongodb
       - ${es_link}:es
       - ${rabbitmq_link}:rabbitmq
+    links:
+      - eurekaserver
     environment:
       - ENV=${profile}
     expose:
