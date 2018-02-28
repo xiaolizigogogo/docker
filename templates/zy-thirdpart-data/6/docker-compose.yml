@@ -124,6 +124,7 @@ services:
       - ${mongodb_link}:mongodb
       - ${es_link}:es
       - ${rabbitmq_link}:rabbitmq
+      - ${eurekaserver}:eurekaserver
     environment:
       - ENV=${profile}
     expose:
@@ -176,6 +177,7 @@ services:
       - ${mongodb_link}:mongodb
       - ${es_link}:es
       - ${rabbitmq_link}:rabbitmq
+      - ${eurekaserver}:eurekaserver
     environment:
       - ENV=${profile}
     expose:
