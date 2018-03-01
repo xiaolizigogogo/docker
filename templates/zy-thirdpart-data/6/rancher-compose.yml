@@ -67,3 +67,58 @@ catalog:
       type: "string"
       default: "/usr01/logs/zyservice"
 
+    - variable: "JAVA_OPTS"
+      description: "JAVA_OPTS"
+      label: "JAVA_OPTS:"
+      required: true
+      type: "string"
+      default: "-server -Xms1024m -Xmx1024m -XX:NewSize=320m -XX:MaxNewSize=320m -XX:PermSize=96m -XX:MaxPermSize=256m -Xmn500m -XX:MaxTenuringThreshold=5"
+services:
+  mox-service:
+    scale: ${scale}
+    start_on_create: true
+    health_check:
+      response_timeout: 10000
+      healthy_threshold: 2
+      port: 8080
+      unhealthy_threshold: 3
+      initializing_timeout: 200000
+      interval: 10000
+      strategy: recreate
+      reinitializing_timeout: 200000
+  bairong-service:
+    scale: ${scale}
+    start_on_create: true
+    health_check:
+      response_timeout: 10000
+      healthy_threshold: 2
+      port: 8080
+      unhealthy_threshold: 3
+      initializing_timeout: 200000
+      interval: 10000
+      strategy: recreate
+      reinitializing_timeout: 200000
+  car-service:
+    scale: ${scale}
+    start_on_create: true
+    health_check:
+      response_timeout: 10000
+      healthy_threshold: 2
+      port: 8080
+      unhealthy_threshold: 3
+      initializing_timeout: 200000
+      interval: 10000
+      strategy: recreate
+      reinitializing_timeout: 200000 
+  sms-service:
+    scale: ${scale}
+    start_on_create: true
+    health_check:
+      response_timeout: 10000
+      healthy_threshold: 2
+      port: 8080
+      unhealthy_threshold: 3
+      initializing_timeout: 200000
+      interval: 10000
+      strategy: recreate
+      reinitializing_timeout: 200000  
